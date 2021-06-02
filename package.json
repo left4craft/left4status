@@ -1,0 +1,20 @@
+{
+  "name": "left4status",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Serverless statuspage.io automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/left4craft/left4status.git"
+  },
+  "author": "left4craft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/left4craft/left4status/issues"
+  },
+  "homepage": "https://github.com/left4craft/left4status#readme"
+}
