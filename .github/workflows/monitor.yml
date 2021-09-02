@@ -1,0 +1,4 @@
+name: Status monitoring
+on:
+  schedule:
+    - cron: "*/5 * * * *"

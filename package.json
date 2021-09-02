@@ -2,10 +2,11 @@
   "name": "left4status",
   "version": "2.0.0",
   "private": true,
-  "description": "Serverless statuspage.io automation",
+  "description": "A serverless status page",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css",
+    "dev": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,15 @@
   "bugs": {
     "url": "https://github.com/left4craft/left4status/issues"
   },
-  "homepage": "https://github.com/left4craft/left4status#readme"
+  "homepage": "https://github.com/left4craft/left4status#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "eslint": "^7.32.0",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.9"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "is-reachable": "^5.0.0"
+  }
 }

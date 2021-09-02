@@ -1,0 +1,22 @@
+{
+	"minecraft": [
+		{
+			"name": "Hub",
+			"server": "fb4fc893"
+		}
+	],
+	"websites": [
+		{
+			"name": "Website",
+			"host": "https://www.left4craft.org"
+		},
+		{
+			"name": "Wiki",
+			"host": "https://wiki.left4craft.org"
+		},
+		{
+			"name": "Short URLS",
+			"host": "https://l4c.link"
+		}
+	]
+}

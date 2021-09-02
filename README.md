@@ -1,2 +1,3 @@
 # left4status
-Serverless statuspage.io automation.
+
+A serverless status page.
