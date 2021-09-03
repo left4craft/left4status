@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-	<title>Left4Craft | Status</title>
+	<title>Status • Left4Craft</title>
 
-	<meta name="title" content="Left4Craft | Status" />
+	<meta name="title" content="Status  •  Left4Craft" />
 	<meta name="description" content="Check the status of Left4Craft's services" />
 	<meta name="keywords" content="Left4Craft, status, page, statuspage" />
 	<meta name="author" content="Left4Craft" />
@@ -15,7 +15,7 @@
 	<meta name="distribution" content="Global" />
 	<meta name="owner" content="Left4Craft" />
 	<meta name="url" content="https://status.left4craft.org" />
-	<meta name="og:title" content="Left4Craft | Status" />
+	<meta name="og:title" content="Status  •  Left4Craft" />
 	<meta name="og:description" content="Check the status of Left4Craft's services" />
 	<meta name="og:url" content="https://status.left4craft.org" />
 	<meta name="og:image" content="./logo.png" />
@@ -33,9 +33,9 @@
 	<div>
 		<nav class="bg-primary shadow text-white" x-data="{ open: false }">
 			<!-- x-bind:class="'bg-primary shadow' + (props.fixed ? ' fixed w-full' : '' )" -->
-			<div class="max-w-7xl mb-4 px-8">
+			<div class="max-w-7xl mb-6 px-8">
 				<div class="flex items-center justify-between h-16">
-					<div class=" flex items-center">
+					<div class="flex items-center">
 						<a class="flex-shrink-0" href="/">
 							<img class="h-8 w-8" src="./logo.png" alt="Logo" />
 						</a>
@@ -118,8 +118,34 @@
 	</div>
 
 	<container class="container">
-		<div class="dark:bg-light dark:text-white block md:m-10 m-2 p-5 rounded-lg">
-			oi
+		<div class="block md:mx-36 2xl:mx-72 m-4 p-10">
+			<div class='shadow-2xl'>
+				<div
+					class="text-xl text-white dark:bg-yellow-400 dark:bg-opacity-90 dark:border-yellow-400 border-t-2 border-l-2 border-r-2 p-3 rounded-t-lg ">
+					Degraded performance
+				</div>
+				<div
+					class="text-white dark:bg-yellow-400 dark:bg-opacity-10 dark:border-yellow-400 border-b-2 border-l-2 border-r-2 p-3 rounded-b-lg">
+					Some services are suffering from degraded performance.
+				</div>
+			</div>
+		</div>
+	</container>
+
+
+	<container class="container">
+		<div class="block dark:bg-light dark:text-white shadow-2xl md:mx-36 2xl:mx-72 m-4 p-5 rounded-lg">
+			<div class="text-xl">Minecraft</div>
+
+			<!-- ----
+			------
+			-----
+			graph|graph|graph
+			graph|graph|graph -->
+		</div>
+
+		<div class="block dark:bg-light dark:text-white shadow-2xl md:mx-36 2xl:mx-72 m-4 p-5 rounded-lg">
+			<div class="text-xl">Websites</div>
 		</div>
 	</container>
 
