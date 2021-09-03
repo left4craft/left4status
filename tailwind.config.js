@@ -2,8 +2,8 @@ module.exports = {
 	darkMode: 'class',
 	plugins: [],
 	purge: [
-		'./src/**/*.html',
-		'./src/**/*.js'
+		'./public/**/*.html',
+		'./public/**/*.js'
 	],
 	theme: {
 
@@ -11,8 +11,11 @@ module.exports = {
 			colors: {
 				dark: '#2e2e2e',
 				light: '#505050',
-				primary: '#4caf50',
-				secondary: '#66aa44'
+				/*
+				 * primary: '#4caf50',
+				 * secondary: '#66aa44'
+				 */
+				primary: '#66aa44'
 			}
 		}
 	},

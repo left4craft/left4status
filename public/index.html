@@ -16,23 +16,108 @@
 	<meta name='url' content='https://status.left4craft.org' />
 	<meta name='og:title' content='Left4Craft | Portal' />
 	<meta name='og:url' content='https://status.left4craft.org' />
-	<meta name='og:image' content='/logo.png' />
+	<meta name='og:image' content='./logo.png' />
 	<meta name='og:site_name' content='Left4Craft' />
 	<meta name='theme-color' content='#66AA44' />
 
-	<link rel='icon' href='/favicon.ico' />
-	<link rel='stylesheet' href='/tailwind.css' />
+	<link rel='icon' href='./favicon.ico' />
+	<link rel='stylesheet' href='./tailwind.css' />
 
 	<script defer src='https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js'></script>
 </head>
 
 <body class='dark'>
 
-	<section class='dark:bg-light dark:text-white'>
-		oi
-	</section>
+	<div>
+		<nav class='bg-primary shadow text-white' x-data="{ open: false }"> <!-- x-bind:class='"bg-primary shadow" + (props.fixed ? " fixed w-full" : "" )' -->
+			<div class='max-w-7xl mx-auto px-8'>
+				<div class='flex items-center justify-between h-16'>
+					<div class=' flex items-center'>
+						<a class='flex-shrink-0' href='/'>
+							<img class='h-8 w-8' src='./logo.png' alt='Logo' />
+						</a>
+						<div class='hidden md:block'>
+							<div class='ml-10 flex items-baseline space-x-4'>
+								<a class='text-white hover:underline px-3 py-2 rounded-md text-sm font-medium'
+									href='/'>
+									Home
+								</a>
+								<a class='text-white hover:underline px-3 py-2 rounded-md text-sm font-medium'
+									href='/shop'>
+									Shop
+								</a>
+								<a class='text-white hover:underline px-3 py-2 rounded-md text-sm font-medium'
+									href='https://wiki.left4craft.org'>
+									Wiki
+								</a>
+								<a class='text-white hover:underline px-3 py-2 rounded-md text-sm font-medium'
+									href='/vote'>
+									Vote
+								</a>
+								<a class='text-white hover:underline px-3 py-2 rounded-md text-sm font-medium'
+									href='https://bans.left4craft.org'>
+									Bans
+								</a>
+								<a class='text-white hover:underline px-3 py-2 rounded-md text-sm font-medium'
+									href='https://status.left4craft.org'>
+									Status
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class='block'>
+						<div class='ml-4 flex items-center md:ml-6'>
+						</div>
+					</div>
+					<div class='-mr-2 flex md:hidden'>
+						<button
+							class='text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none'
+							x-on:click="open = !open">
+							<svg width='20' height='20' fill='currentColor' class='h-8 w-8' viewBox='0 0 1792 1792'
+								xmlns='http://www.w3.org/2000/svg'>
+								<path
+									d='M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z'>
+								</path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class='md:hidden' x-bind:hidden='!open'>
+				<div class='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+					<a class='text-white hover:underline block px-3 py-2 rounded-md text-base font-medium' href='/'>
+						Home
+					</a>
+					<a class='text-white hover:underline block px-3 py-2 rounded-md text-base font-medium'
+						href='/shop'>
+						Shop
+					</a>
+					<a class='text-white hover:underline block px-3 py-2 rounded-md text-base font-medium'
+						href='https://wiki.left4craft.org'>
+						Wiki
+					</a>
+					<a class='text-white hover:underline block px-3 py-2 rounded-md text-base font-medium'
+						href='/vote'>
+						Vote
+					</a>
+					<a class='text-white hover:underline block px-3 py-2 rounded-md text-base font-medium'
+						href='https://bans.left4craft.org'>
+						Bans
+					</a>
+					<a class='text-white hover:underline block px-3 py-2 rounded-md text-base font-medium'
+						href='https://status.left4craft.org'>
+						Status
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div>
 
-</div>
+	<container class='container'>
+		<div class='dark:bg-light dark:text-white block md:m-10 m-2 p-5 rounded-lg'>
+			oi
+		</div>
+	</container>
 
 </body>
 

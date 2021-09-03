@@ -13,6 +13,7 @@ jobs:
       - run: npm ci --production
       - run: npm start
         env:
+          NODE_ENV: PRODUCTION
           PTERO_HOST: ${{secrets.PTERO_HOST}}
           PTERO_KEY: ${{secrets.PTERO_KEY}}
       - run: npm run build
