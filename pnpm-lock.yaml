@@ -9,11 +9,11 @@ specifiers:
   tailwindcss: ^2.2.9
 
 dependencies:
-  dotenv: 10.0.0
   is-reachable: 5.0.0
 
 devDependencies:
   autoprefixer: 10.3.3_postcss@8.3.6
+  dotenv: 10.0.0
   eslint: 7.32.0
   postcss: 8.3.6
   tailwindcss: 2.2.9_3ae63246f7b6ebdbe8521b4b745e51c3
@@ -519,7 +519,7 @@ packages:
   /dotenv/10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
-    dev: false
+    dev: true
 
   /electron-to-chromium/1.3.827:
     resolution: {integrity: sha512-ye+4uQOY/jbjRutMcE/EmOcNwUeo1qo9aKL2tPyb09cU3lmxNeyDF4RWiemmkknW+p29h7dyDqy02higTxc9/A==}

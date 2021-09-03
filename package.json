@@ -3,10 +3,11 @@
   "version": "2.0.0",
   "private": true,
   "description": "A serverless status page",
-  "main": "index.js",
+  "main": "job/index.js",
   "scripts": {
     "build": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css",
-    "dev": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch"
+    "dev": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,12 @@
   "homepage": "https://github.com/left4craft/left4status#readme",
   "devDependencies": {
     "autoprefixer": "^10.3.3",
+    "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.9"
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
     "is-reachable": "^5.0.0"
   }
 }

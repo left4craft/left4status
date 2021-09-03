@@ -1,4 +1,19 @@
-name: Status monitoring
+name: Check service status
 on:
   schedule:
     - cron: "*/5 * * * *"
+jobs:
+  run-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm ci --production
+      - run: npm start
+        env:
+          PTERO_HOST: ${{secrets.PTERO_HOST}}
+          PTERO_KEY: ${{secrets.PTERO_KEY}}
+      - run: npm run build
+      - uses: actions-x/commit@v2
