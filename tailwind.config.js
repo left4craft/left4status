@@ -6,7 +6,6 @@ module.exports = {
 		'./public/**/*.js'
 	],
 	theme: {
-
 		extend: {
 			colors: {
 				dark: '#2e2e2e',
@@ -16,7 +15,8 @@ module.exports = {
 				 * secondary: '#66aa44'
 				 */
 				primary: '#66aa44'
-			}
+			},
+			screens: { '3xl': '2160px' }
 		}
 	},
 	variants: {}
