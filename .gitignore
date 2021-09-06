@@ -1,3 +1,8 @@
 node_modules
 .env
 public/tailwind.css
+key.json
+
+.firebase/
+
+firebase-debug.log
