@@ -24,6 +24,6 @@ jobs:
           channelId: live
           projectId: l4c-status
       - name: Deploy to Firebase Functions
-        uses: BIGG-Kaymo/deploy-firebase-functions@v1.0.1
+        run: firebase deploy --token ${FIREBASE_TOKEN} --project l4c-status --only functions
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
