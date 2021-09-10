@@ -108,9 +108,6 @@ module.exports = {
 		'multiline-comment-style': [
 			'warn'
 		],
-		'no-console': [
-			'warn'
-		],
 		'no-return-assign': [
 			'error'
 		],

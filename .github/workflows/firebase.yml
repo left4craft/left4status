@@ -16,11 +16,6 @@ jobs:
         run: npm ci && npm run build
         env:
             NODE_ENV: PRODUCTION
-      - run: npm i -g firebase-tools
-      - name: Deploy to Firebase Functions
-        run: firebase deploy --token ${FIREBASE_TOKEN} --project l4c-status --only functions
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

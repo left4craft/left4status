@@ -5,7 +5,7 @@
   "description": "A serverless status page",
   "scripts": {
     "build": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css",
-    "dev": "firebase serve"
+    "dev": "firebase emulators:start"
   },
   "repository": {
     "type": "git",
