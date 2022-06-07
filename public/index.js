@@ -1,1 +1,1 @@
-const API = 'https://us-central1-l4c-status.cloudfunctions.net';
+const API = 'https://status.l4c.workers.dev';
