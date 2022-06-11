@@ -1,7 +1,8 @@
+.DS_Store
 node_modules
-.firebase
-
-*.log
-public/tailwind.css
-key.json
+/build
+/.svelte-kit
+/package
 .env
+.env.*
+!.env.example

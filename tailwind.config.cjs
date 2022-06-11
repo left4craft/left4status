@@ -1,10 +1,7 @@
 module.exports = {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	darkMode: 'class',
 	plugins: [],
-	purge: [
-		'./public/**/*.html',
-		'./public/**/*.js'
-	],
 	theme: {
 		extend: {
 			colors: {

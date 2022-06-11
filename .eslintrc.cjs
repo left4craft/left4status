@@ -1,16 +1,18 @@
 module.exports = {
-	'env': {
-		'browser': true,
-		'commonjs': true,
-		'es2021': true,
-		'node': false
+	root: true,
+	extends: ['eslint:recommended'],
+	plugins: ['svelte3'],
+	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020
 	},
-	'extends': 'eslint:recommended',
-	'parserOptions': {
-		'ecmaVersion': 12,
-		'sourceType': 'module'
+	env: {
+		browser: true,
+		es2017: true,
+		node: true
 	},
-	'rules': {
+	rules: {
 		'array-bracket-newline': [
 			'error',
 			'consistent'

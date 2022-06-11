@@ -1,1 +1,0 @@
-const API = 'https://status.l4c.workers.dev';
