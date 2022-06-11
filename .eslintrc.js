@@ -1,11 +1,15 @@
 module.exports = {
 	'env': {
+		'browser': true,
 		'commonjs': true,
 		'es2021': true,
-		'node': true
+		'node': false
 	},
 	'extends': 'eslint:recommended',
-	'parserOptions': { 'ecmaVersion': 12 },
+	'parserOptions': {
+		'ecmaVersion': 12,
+		'sourceType': 'module'
+	},
 	'rules': {
 		'array-bracket-newline': [
 			'error',
@@ -106,7 +110,7 @@ module.exports = {
 			'error'
 		],
 		'multiline-comment-style': [
-			'warn'
+			'off'
 		],
 		'no-return-assign': [
 			'error'
