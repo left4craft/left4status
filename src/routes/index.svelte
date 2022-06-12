@@ -2,59 +2,43 @@
 	import "../app.css";
 	import Navbar from "../components/Navbar.svelte";
 	import Summary from "../components/Summary.svelte";
-	import statuses, {
-		getDate,
-		getUptime,
-		minsToHours,
-		statusFromMins,
-	} from "$lib/statuses";
-	import { beautify } from "$lib/strings";
+	import ServiceStatus from "../components/ServiceStatus.svelte";
 
 	const status = {
-		overall: "degraded",
+		overall: "online",
 		minecraft: {
 			proxy: {
 				status: "online",
 				history: new Array(60)
 					.fill(0)
-					.map(() => Math.floor(Math.random() * 20)),
+					.map(() => Math.floor(Math.random() * 5)),
 			},
 			hub: {
 				status: "online",
 				history: [],
+				player_count: 0,
+				tps: 20,
 			},
 			survival: {
 				status: "online",
 				history: [],
+				player_count: 3,
+				tps: 19.9,
 			},
 			creative: {
 				status: "online",
 				history: [],
+				player_count: 1,
+				tps: 20,
 			},
 			party_games: {
 				status: "online",
 				history: [],
+				player_count: 0,
+				tps: 20,
 			},
 		},
 		websites: {},
-	};
-	const stats = {
-		hub: {
-			player_count: 0,
-			tps: 20,
-		},
-		survival: {
-			player_count: 3,
-			tps: 19.9,
-		},
-		creative: {
-			player_count: 1,
-			tps: 20,
-		},
-		party_games: {
-			player_count: 0,
-			tps: 20,
-		},
 	};
 
 	let refreshIn = 60;
@@ -84,43 +68,7 @@
 			<div class="text-xl font-semibold">Minecraft</div>
 			{#each Object.keys(status.minecraft) as name (name)}
 				<div class="p-4">
-					<h3>
-						<span class="font-semibold">{beautify(name)}</span>
-						-
-						<span
-							class={statuses[status.minecraft[name].status]
-								.textColour}
-						>
-							{statuses[
-								status.minecraft[name].status
-							].title.toLowerCase()}
-						</span>
-						<span class="text-gray-300">{getUptime(status.minecraft[name].history)}%</span>
-					</h3>
-					<div class="flex flex-row flex-nowrap gap-0.5">
-						{#each status.minecraft[name].history as mins, i}
-							<div
-								class="flex-1 grow relative inline-block tooltip hover:cursor-pointer {statuses[
-									statusFromMins(mins)
-								].bgColour} h-8"
-							>
-								<div
-									class="py-2 px-4 bg-darker w-48 rounded-md z-20 absolute right-0 invisible tooltip-item -translate-y-16 translate-x-16"
-								>
-									<p
-										class="text-sm font-bold text-gray-100 pb-1"
-									>
-										{getDate(status.minecraft[name].history.length, i)}
-									</p>
-									<p
-										class="text-xs leading-4 text-gray-200 pb-3"
-									>
-										Offline for {minsToHours(mins)}
-									</p>
-								</div>
-							</div>
-						{/each}
-					</div>
+					<ServiceStatus {status} {name} />
 				</div>
 			{/each}
 		</div>
@@ -170,9 +118,3 @@
 		</div>
 	</section>
 </div>
-
-<style>
-	.tooltip:hover .tooltip-item {
-		visibility: visible;
-	}
-</style>
