@@ -1,3 +1,5 @@
+import { browser } from '$app/env';
+
 const statuses = {
 	degraded: {
 		bgColour: 'bg-yellow-400',
@@ -40,7 +42,7 @@ export const statusFromMins = mins => mins < 3 ? 'online' : mins < 15 ? 'minor' 
 
 export const minsToHours = mins => mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}m` : mins + 'm';
 
-export const getDate = (l, i) => new Intl.DateTimeFormat('en-GB', { // navigator.language (server-side undefined)
+export const getDate = (l, i) => new Intl.DateTimeFormat(browser ? navigator.language : 'en-GB', {
 	day: 'numeric',
 	month: 'long',
 	weekday: 'long',
