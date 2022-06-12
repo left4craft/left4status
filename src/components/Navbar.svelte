@@ -44,7 +44,7 @@
 							</a>
 							<a
 								class="text-white hover:underline px-3 py-2 rounded-md text-sm font-medium"
-								href="https://bans.left4craft.org"
+								href="https://www.left4craft.org/punishments"
 							>
 								Bans
 							</a>
