@@ -13,7 +13,6 @@
 		"lint": "eslint ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"eslint": "^8.16.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -22,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-static": "1.0.0-next.34",
 		"autoprefixer": "^10.4.7",
 		"is-reachable": "^5.2.0",
 		"postcss": "^8.4.14",
