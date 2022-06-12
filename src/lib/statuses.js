@@ -59,3 +59,5 @@ export const getUptime = days => {
 	const online = total - offline;
 	return (online / total * 100).toFixed(2);
 };
+
+export const getCombinedUptime = services => (services.map(days => getUptime(days)).reduce((acc, n) => acc + Number(n), 0) / services.length).toFixed(2);

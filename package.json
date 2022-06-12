@@ -13,17 +13,16 @@
 		"lint": "eslint ."
 	},
 	"devDependencies": {
-		"@sveltejs/kit": "next",
+		"@sveltejs/kit": "1.0.0-next.350",
 		"eslint": "^8.16.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"svelte": "^3.44.0",
-		"wrangler": "^2.0.9"
+		"svelte": "^3.44.0"
 	},
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-static": "1.0.0-next.34",
 		"autoprefixer": "^10.4.7",
-		"is-reachable": "^5.2.0",
+		"chart.js": "^3.8.0",
 		"postcss": "^8.4.14",
 		"svelte-preprocess": "^4.10.7",
 		"tailwindcss": "^3.1.2"

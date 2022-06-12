@@ -13,6 +13,6 @@
 	</span>
 	<span class="text-gray-300">
 		{getUptime(service.history)}%
-		</span>
+	</span>
 </h3>
 <ServiceStatusHistory {service} />

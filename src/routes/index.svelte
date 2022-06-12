@@ -3,6 +3,8 @@
 	import Navbar from "../components/Navbar.svelte";
 	import Summary from "../components/Summary.svelte";
 	import ServiceStatus from "../components/ServiceStatus.svelte";
+	import TpsChart from "../components/TpsChart.svelte";
+import { getCombinedUptime } from "$lib/statuses";
 
 	const status = {
 		overall: 'minor',
@@ -103,19 +105,24 @@
 			id="minecraft-status"
 			class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg"
 		>
-			<div class="text-xl font-semibold">Minecraft</div>
+			<span class="text-xl font-semibold">Minecraft</span>
+			<span class="text-gray-300">
+				{getCombinedUptime(Object.keys(status.minecraft).map(id => status.minecraft[id].history))}%
+			</span>
 			{#each Object.keys(status.minecraft) as name (name)}
 				<div class="p-4">
 					<ServiceStatus service={status.minecraft[name]} />
 				</div>
 			{/each}
 		</div>
-
 		<div
 			id="websites-status"
 			class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg"
 		>
-			<div class="text-xl font-semibold">Websites</div>
+			<span class="text-xl font-semibold">Websites</span>
+			<span class="text-gray-300">
+				{getCombinedUptime(Object.keys(status.websites).map(id => status.websites[id].history))}%
+			</span>
 			{#each Object.keys(status.websites) as name (name)}
 				<div class="p-4">
 					<ServiceStatus service={status.websites[name]} />
@@ -128,18 +135,9 @@
 			<h2 class="text-3xl font-bold text-center my-8">Minecraft TPS</h2>
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:m-4">
-			<div class="dark:bg-light shadow-2xl p-5 rounded-lg">
-				<h3 class="font-semibold">Hub</h3>
-			</div>
-			<div class="dark:bg-light shadow-2xl p-5 rounded-lg">
-				<h3 class="font-semibold">Survival</h3>
-			</div>
-			<div class="dark:bg-light shadow-2xl p-5 rounded-lg">
-				<h3 class="font-semibold">Creative</h3>
-			</div>
-			<div class="dark:bg-light shadow-2xl p-5 rounded-lg">
-				<h3 class="font-semibold">PartyGames</h3>
-			</div>
+			{#each Object.keys(status.minecraft).filter(id => id !== 'proxy') as name (name)}
+				<TpsChart service={status.minecraft[name]} />
+			{/each}
 		</div>
 	</section>
 	<section id="player-count" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
