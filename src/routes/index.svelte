@@ -5,40 +5,78 @@
 	import ServiceStatus from "../components/ServiceStatus.svelte";
 
 	const status = {
-		overall: "online",
+		overall: 'minor',
 		minecraft: {
 			proxy: {
-				status: "online",
+				name: 'Bungee',
+				status: 'online',
 				history: new Array(60)
 					.fill(0)
-					.map(() => Math.floor(Math.random() * 5)),
+					.map(() => Math.floor(Math.random() * 1)),
 			},
 			hub: {
-				status: "online",
-				history: [],
+				name: 'Hub',
+				status: 'online',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 1)),
 				player_count: 0,
 				tps: 20,
 			},
 			survival: {
-				status: "online",
-				history: [],
+				name: 'Survival',
+				status: 'online',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 4)),
 				player_count: 3,
 				tps: 19.9,
 			},
 			creative: {
-				status: "online",
-				history: [],
+				name: 'Creative',
+				status: 'degraded',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 4)),
 				player_count: 1,
 				tps: 20,
 			},
 			party_games: {
-				status: "online",
-				history: [],
+				name: 'Party Games',
+				status: 'major',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 500)),
 				player_count: 0,
 				tps: 20,
 			},
 		},
-		websites: {},
+		websites: {
+			main: {
+				name: 'Main Website',
+				host: 'https://www.left4craft.org',
+				status: 'online',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 2)),
+			},
+			wiki: {
+				name: 'Wiki',
+				host: 'https://wiki.left4craft.org',
+				status: 'online',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 3)),
+			},
+			short: {
+				name: 'Short URLs',
+				host: 'https://l4c.link',
+				status: 'online',
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 1)),
+			}
+		},
 	};
 
 	let refreshIn = 60;
@@ -68,7 +106,7 @@
 			<div class="text-xl font-semibold">Minecraft</div>
 			{#each Object.keys(status.minecraft) as name (name)}
 				<div class="p-4">
-					<ServiceStatus {status} {name} />
+					<ServiceStatus service={status.minecraft[name]} />
 				</div>
 			{/each}
 		</div>
@@ -78,6 +116,11 @@
 			class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg"
 		>
 			<div class="text-xl font-semibold">Websites</div>
+			{#each Object.keys(status.websites) as name (name)}
+				<div class="p-4">
+					<ServiceStatus service={status.websites[name]} />
+				</div>
+			{/each}
 		</div>
 	</section>
 	<section id="tps" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">

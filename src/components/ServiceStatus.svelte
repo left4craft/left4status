@@ -1,19 +1,18 @@
 <script>
-	export let status;
-	export let name;
+	export let service;
 	import statuses, { getUptime } from "$lib/statuses";
 	import { beautify } from "$lib/strings";
 	import ServiceStatusHistory from "./ServiceStatusHistory.svelte";
 </script>
 
 <h3>
-	<span class="font-semibold">{beautify(name)}</span>
+	<span class="font-semibold">{service.name}</span>
 	-
-	<span class={statuses[status.minecraft[name].status].textColour}>
-		{statuses[status.minecraft[name].status].title.toLowerCase()}
+	<span class={statuses[service.status].textColour}>
+		{statuses[service.status].name.toLowerCase()}
 	</span>
 	<span class="text-gray-300">
-		{getUptime(status.minecraft[name].history)}%
+		{getUptime(service.history)}%
 		</span>
 </h3>
-<ServiceStatusHistory {status} {name} />
+<ServiceStatusHistory {service} />

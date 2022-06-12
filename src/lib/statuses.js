@@ -7,22 +7,25 @@ const statuses = {
 		description: 'Some services are suffering from degraded performance.',
 		// icon: 'fa-solid fa-turtle',
 		icon: 'fa-solid fa-triangle-exclamation',
+		name: 'Degraded Performance', // for individual service status
 		textColour: 'text-yellow-400',
-		title: 'Degraded Performance'
+		title: 'Degraded Performance' // for overall status
 	},
 	major: {
 		bgColour: 'bg-red-400',
 		borderColour: 'border-red-400',
 		description: 'There is a major disruption to service operation.',
 		icon: 'fa-solid fa-xmark',
+		name: 'Offline',
 		textColour: 'text-red-400',
 		title: 'Major Outage'
 	},
-	minor: {
+	minor: { // for overall status only - offline services should always be marked as `major`
 		bgColour: 'bg-orange-400',
 		borderColour: 'border-orange-400',
 		description: 'Some services are offline.',
 		icon: 'fa-solid fa-triangle-exclamation',
+		name: 'Offline',
 		textColour: 'text-orange-400',
 		title: 'Minor Outage'
 	},
@@ -31,6 +34,7 @@ const statuses = {
 		borderColour: 'border-green-400',
 		description: 'All services are operating normally.',
 		icon: 'fa-solid fa-check',
+		name: 'Online',
 		textColour: 'text-green-400',
 		title: 'Online'
 	}
