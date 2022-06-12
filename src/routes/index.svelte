@@ -1,11 +1,12 @@
 <script>
 	import "../app.css";
 	import Navbar from "../components/Navbar.svelte";
+	import Summary from "../components/Summary.svelte";
 	import statuses from "$lib/statuses";
-	import { beautify } from "../lib/strings";
+	import { beautify } from "$lib/strings";
 
 	const status = {
-		overall: 'major',
+		overall: "online",
 		minecraft: {
 			proxy: {
 				status: "online",
@@ -63,26 +64,7 @@
 
 <div class="dark:text-white lg:mx-40 2xl:mx-96 ">
 	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
-		<div class="block sm:mx-32 mb-16">
-			<div
-				class="{statuses[status.overall].bgColour} dark:bg-opacity-10 {statuses[status.overall].borderColour} border-2 p-5 rounded-lg text-center shadow-2xl flex-initial"
-			>
-				<h3 class="{statuses[status.overall].textColour} text-xl font-bold pb-2">
-					<i class="{statuses[status.overall].icon} fa-xl"></i>
-					<br>
-					{statuses[status.overall].title}
-				</h3>
-				<p>
-					Some services are suffering from degraded performance.
-					<br />
-					<a
-						href="https://l4c.link/discord"
-						class="font-bold hover:underline"
-						target="_blank">Join the Discord server</a
-					> for updates.
-				</p>
-			</div>
-		</div>
+		<Summary {status} />
 	</section>
 	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
 		<div>
@@ -95,7 +77,11 @@
 					<h3>
 						<span class="font-semibold">{beautify(name)}</span>
 						-
-						<span class="{statuses[status.minecraft[name].status].textColour}">{status.minecraft[name].status}</span>
+						<span
+							class={statuses[status.minecraft[name].status]
+								.textColour}
+							>{status.minecraft[name].status}</span
+						>
 					</h3>
 					{#each status.minecraft[name].history as mins}
 						<span class="p-1">{mins}</span>
