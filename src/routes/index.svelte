@@ -11,7 +11,7 @@
 	import { beautify } from "$lib/strings";
 
 	const status = {
-		overall: "minor",
+		overall: "degraded",
 		minecraft: {
 			proxy: {
 				status: "online",

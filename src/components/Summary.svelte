@@ -14,7 +14,7 @@
 		<h3
 			class="{statuses[status.overall].textColour} text-xl font-bold pb-2"
 		>
-			<i class="{statuses[status.overall].icon} fa-xl" />
+			<i class="{statuses[status.overall].icon} fa-xl mb-6" />
 			<br />
 			{statuses[status.overall].title}
 		</h3>
