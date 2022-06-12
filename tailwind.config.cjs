@@ -7,6 +7,7 @@ module.exports = {
 			colors: {
 				blurple: '#5865F2',
 				dark: '#2e2e2e',
+				darker: '#212121',
 				light: '#505050',
 				/*
 				 * primary: '#4caf50',

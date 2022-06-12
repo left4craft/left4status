@@ -2,31 +2,38 @@
 	import "../app.css";
 	import Navbar from "../components/Navbar.svelte";
 	import Summary from "../components/Summary.svelte";
-	import statuses from "$lib/statuses";
+	import statuses, {
+		getDate,
+		getUptime,
+		minsToHours,
+		statusFromMins,
+	} from "$lib/statuses";
 	import { beautify } from "$lib/strings";
 
 	const status = {
-		overall: "online",
+		overall: "minor",
 		minecraft: {
 			proxy: {
 				status: "online",
-				history: [0, 0, 0, 4, 0, 17, 0, 0, 2, 1, 0],
+				history: new Array(60)
+					.fill(0)
+					.map(() => Math.floor(Math.random() * 20)),
 			},
 			hub: {
 				status: "online",
-				history: [0, 0, 0, 4, 0, 17, 0, 0, 2, 1, 0],
+				history: [],
 			},
 			survival: {
 				status: "online",
-				history: [0, 0, 0, 4, 0, 17, 0, 0, 2, 1, 0],
+				history: [],
 			},
 			creative: {
 				status: "online",
-				history: [0, 0, 0, 4, 0, 17, 0, 0, 2, 1, 0],
+				history: [],
 			},
 			party_games: {
 				status: "online",
-				history: [0, 0, 0, 4, 0, 17, 0, 0, 2, 1, 0],
+				history: [],
 			},
 		},
 		websites: {},
@@ -63,14 +70,17 @@
 <Navbar />
 
 <div class="dark:text-white lg:mx-40 2xl:mx-96 ">
-	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
+	<section id="summary" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
 		<Summary {status} />
 	</section>
-	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
+	<section id="status" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
 		<div>
 			<h2 class="text-3xl font-bold text-center my-8">Status</h2>
 		</div>
-		<div class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg">
+		<div
+			id="minecraft-status"
+			class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg"
+		>
 			<div class="text-xl font-semibold">Minecraft</div>
 			{#each Object.keys(status.minecraft) as name (name)}
 				<div class="p-4">
@@ -80,21 +90,49 @@
 						<span
 							class={statuses[status.minecraft[name].status]
 								.textColour}
-							>{status.minecraft[name].status}</span
 						>
+							{statuses[
+								status.minecraft[name].status
+							].title.toLowerCase()}
+						</span>
+						<span class="text-gray-300">{getUptime(status.minecraft[name].history)}%</span>
 					</h3>
-					{#each status.minecraft[name].history as mins}
-						<span class="p-1">{mins}</span>
-					{/each}
+					<div class="flex flex-row flex-nowrap gap-0.5">
+						{#each status.minecraft[name].history as mins, i}
+							<div
+								class="flex-1 grow relative inline-block tooltip hover:cursor-pointer {statuses[
+									statusFromMins(mins)
+								].bgColour} h-8"
+							>
+								<div
+									class="py-2 px-4 bg-darker w-48 rounded-md z-20 absolute right-0 invisible tooltip-item -translate-y-16 translate-x-16"
+								>
+									<p
+										class="text-sm font-bold text-gray-100 pb-1"
+									>
+										{getDate(status.minecraft[name].history.length, i)}
+									</p>
+									<p
+										class="text-xs leading-4 text-gray-200 pb-3"
+									>
+										Offline for {minsToHours(mins)}
+									</p>
+								</div>
+							</div>
+						{/each}
+					</div>
 				</div>
 			{/each}
 		</div>
 
-		<div class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg">
+		<div
+			id="websites-status"
+			class="block dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg"
+		>
 			<div class="text-xl font-semibold">Websites</div>
 		</div>
 	</section>
-	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
+	<section id="tps" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
 		<div>
 			<h2 class="text-3xl font-bold text-center my-8">Minecraft TPS</h2>
 		</div>
@@ -113,7 +151,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
+	<section id="player-count" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
 		<div>
 			<h2 class="text-3xl font-bold text-center my-8">
 				Minecraft Player Count
@@ -132,3 +170,9 @@
 		</div>
 	</section>
 </div>
+
+<style>
+	.tooltip:hover .tooltip-item {
+		visibility: visible;
+	}
+</style>

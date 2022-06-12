@@ -9,6 +9,7 @@
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
+		"functions": "wrangler pages dev static",
 		"lint": "eslint ."
 	},
 	"devDependencies": {
@@ -16,7 +17,8 @@
 		"@sveltejs/kit": "next",
 		"eslint": "^8.16.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"svelte": "^3.44.0"
+		"svelte": "^3.44.0",
+		"wrangler": "^2.0.9"
 	},
 	"type": "module",
 	"dependencies": {

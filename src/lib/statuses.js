@@ -1,4 +1,4 @@
-export default {
+const statuses = {
 	degraded: {
 		bgColour: 'bg-yellow-400',
 		borderColour: 'border-yellow-400',
@@ -30,6 +30,26 @@ export default {
 		description: 'All services are operating normally.',
 		icon: 'fa-solid fa-check',
 		textColour: 'text-green-400',
-		title: 'Operational'
+		title: 'Online'
 	}
+};
+
+export default statuses;
+
+export const statusFromMins = mins => mins < 3 ? 'online' : mins < 15 ? 'minor' : 'major';
+
+export const minsToHours = mins => mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}m` : mins + 'm';
+
+export const getDate = (l, i) => new Intl.DateTimeFormat('en-GB', { // navigator.language (server-side undefined)
+	day: 'numeric',
+	month: 'long',
+	weekday: 'long',
+	year: 'numeric'
+}).format(new Date(Date.now() - ((l - i - 1) * 86400000)));
+
+export const getUptime = days => {
+	const total = 1440 * days.length;
+	const offline = days.reduce((t, m) => t + m, 0);
+	const online = total - offline;
+	return (online / total * 100).toFixed(2);
 };
