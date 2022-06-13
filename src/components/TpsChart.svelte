@@ -2,6 +2,7 @@
 	export let service;
 	export let id;
 	import { onMount } from "svelte";
+	import statuses from '$lib/statuses';
 
 	let canvas;
 
@@ -45,9 +46,15 @@
 			},
 		});
 	});
+
+	const tpsColour = tps => statuses[tps >= 19 ? 'online' : tps >=15 ? 'degraded' : tps >=10 ? 'minor' : 'major'].textColour
 </script>
 
 <div class="dark:bg-light shadow-2xl p-5 rounded-lg">
-	<h3 class="font-semibold">{service.name}</h3>
+	<h3>
+		<span class="font-semibold">{service.name}</span>
+		-
+		<span class="{tpsColour(service.tps)}">{service.tps.toFixed(2)} TPS</span>
+	</h3>
 	<canvas bind:this={canvas} id="{id}-tps" width="100%" height="50" />
 </div>

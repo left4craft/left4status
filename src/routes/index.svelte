@@ -33,7 +33,7 @@
 					.fill(0)
 					.map(() => Math.floor(Math.random() * 4)),
 				player_count: 3,
-				tps: 19.9,
+				tps: 15.63,
 			},
 			creative: {
 				name: 'Creative',
@@ -42,7 +42,7 @@
 					.fill(0)
 					.map(() => Math.floor(Math.random() * 4)),
 				player_count: 1,
-				tps: 20,
+				tps: 12.41,
 			},
 			party_games: {
 				name: 'Party Games',
@@ -51,7 +51,7 @@
 					.fill(0)
 					.map(() => Math.floor(Math.random() * 500)),
 				player_count: 0,
-				tps: 20,
+				tps: 7.96,
 			},
 		},
 		websites: {
