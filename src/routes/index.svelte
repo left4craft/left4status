@@ -148,7 +148,7 @@
 			</h2>
 		</div>
 		<div class="dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg">
-			<PlayerCountChart service={status.minecraft} />
+			<PlayerCountChart services={status.minecraft} />
 		</div>
 	</section>
 	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">

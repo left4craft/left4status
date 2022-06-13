@@ -4,6 +4,8 @@
 
 	let canvas;
 
+	const total = (services) => Object.keys(services).reduce((t, id) => t + services[id].player_count || 0, 0);
+
 	onMount(async () => {
 		const { Chart, registerables } = await import("chart.js");
 		Chart.register(...registerables);
@@ -71,7 +73,7 @@
 				elements: {
 					point: {
 						radius: 2,
-						hitRadius: 5
+						hitRadius: 5,
 					},
 				},
 				scales: {
@@ -82,4 +84,10 @@
 	});
 </script>
 
-<canvas bind:this={canvas} id="player-count" width="100%" height="50" />
+<div class="text-center">
+	<p class="bg-dark rounded-full inline-block py-1 px-3 mb-4 text-sm">
+		{total(services)}<span class="text-gray-300">/50</span>
+		online
+	</p>
+	<canvas bind:this={canvas} id="player-count" width="100%" height="50" />
+</div>

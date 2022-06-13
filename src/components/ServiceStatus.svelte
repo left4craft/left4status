@@ -11,7 +11,7 @@
 	<span class={statuses[service.status].textColour}>
 		{statuses[service.status].name.toLowerCase()}
 	</span>
-	<span class="text-gray-300">
+	<span class="text-gray-300 float-right">
 		{getUptime(service.history)}%
 	</span>
 </h3>

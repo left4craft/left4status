@@ -8,7 +8,7 @@ const statuses = {
 		description: 'Some services are suffering from degraded performance.',
 		// icon: 'fa-solid fa-turtle',
 		icon: 'fa-solid fa-triangle-exclamation',
-		name: 'Degraded Performance', // for individual service status
+		name: 'Degraded', // for individual service status
 		textColour: 'text-yellow-400',
 		title: 'Degraded Performance' // for overall status
 	},
