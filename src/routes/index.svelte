@@ -3,8 +3,9 @@
 	import Navbar from "../components/Navbar.svelte";
 	import Summary from "../components/Summary.svelte";
 	import ServiceStatus from "../components/ServiceStatus.svelte";
+	import { getCombinedUptime } from "$lib/statuses";
 	import TpsChart from "../components/TpsChart.svelte";
-import { getCombinedUptime } from "$lib/statuses";
+	import PlayerCountChart from "../components/PlayerCountChart.svelte";
 
 	const status = {
 		overall: 'minor',
@@ -109,9 +110,9 @@ import { getCombinedUptime } from "$lib/statuses";
 			<span class="text-gray-300">
 				{getCombinedUptime(Object.keys(status.minecraft).map(id => status.minecraft[id].history))}%
 			</span>
-			{#each Object.keys(status.minecraft) as name (name)}
+			{#each Object.keys(status.minecraft) as id (id)}
 				<div class="p-4">
-					<ServiceStatus service={status.minecraft[name]} />
+					<ServiceStatus service={status.minecraft[id]} />
 				</div>
 			{/each}
 		</div>
@@ -123,9 +124,9 @@ import { getCombinedUptime } from "$lib/statuses";
 			<span class="text-gray-300">
 				{getCombinedUptime(Object.keys(status.websites).map(id => status.websites[id].history))}%
 			</span>
-			{#each Object.keys(status.websites) as name (name)}
+			{#each Object.keys(status.websites) as id (id)}
 				<div class="p-4">
-					<ServiceStatus service={status.websites[name]} />
+					<ServiceStatus service={status.websites[id]} />
 				</div>
 			{/each}
 		</div>
@@ -135,8 +136,8 @@ import { getCombinedUptime } from "$lib/statuses";
 			<h2 class="text-3xl font-bold text-center my-8">Minecraft TPS</h2>
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:m-4">
-			{#each Object.keys(status.minecraft).filter(id => id !== 'proxy') as name (name)}
-				<TpsChart service={status.minecraft[name]} />
+			{#each Object.keys(status.minecraft).filter(id => id !== 'proxy') as id (id)}
+				<TpsChart service={status.minecraft[id]} {id} />
 			{/each}
 		</div>
 	</section>
@@ -146,7 +147,9 @@ import { getCombinedUptime } from "$lib/statuses";
 				Minecraft Player Count
 			</h2>
 		</div>
-		<div class="dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg" />
+		<div class="dark:bg-light shadow-2xl my-8 sm:m-4 p-5 rounded-lg">
+			<PlayerCountChart service={status.minecraft} />
+		</div>
 	</section>
 	<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
 		<div class="text-center">

@@ -1,7 +1,47 @@
 <script>
 	export let service;
+	export let id;
+	import { onMount } from "svelte";
+
+	let canvas;
+
+	onMount(async () => {
+		const { Chart, registerables } = await import("chart.js");
+		Chart.register(...registerables);
+		Chart.defaults.color = "white";
+		const ctx = canvas.getContext("2d");
+		const chart = new Chart(ctx, {
+			type: "line",
+			data: {
+				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+				datasets: [
+					{
+						label: "TPS",
+						data: [12, 19, 3, 5, 2, 3],
+						backgroundColor: "rgba(102, 170, 68, 0.1)",
+						borderColor: "rgba(102, 170, 68, 0.8)",
+						borderWidth: 2,
+						fill: false,
+						tension: 0.1,
+					},
+				],
+			},
+			options: {
+				maintainAspectRatio: true,
+				elements: {
+					point: {
+						radius: 2,
+					},
+				},
+				scales: {
+					y: { beginAtZero: true },
+				},
+			},
+		});
+	});
 </script>
 
 <div class="dark:bg-light shadow-2xl p-5 rounded-lg">
 	<h3 class="font-semibold">{service.name}</h3>
+	<canvas bind:this={canvas} id="{id}-tps" width="100%" height="50" />
 </div>
