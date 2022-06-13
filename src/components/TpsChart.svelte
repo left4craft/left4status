@@ -9,6 +9,7 @@
 		const { Chart, registerables } = await import("chart.js");
 		Chart.register(...registerables);
 		Chart.defaults.color = "white";
+		Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)";
 		const ctx = canvas.getContext("2d");
 		const chart = new Chart(ctx, {
 			type: "line",
@@ -21,16 +22,21 @@
 						backgroundColor: "rgba(102, 170, 68, 0.1)",
 						borderColor: "rgba(102, 170, 68, 0.8)",
 						borderWidth: 2,
-						fill: false,
+						fill: true,
 						tension: 0.1,
 					},
 				],
 			},
 			options: {
 				maintainAspectRatio: true,
+				interaction: {
+					intersect: false,
+					mode: "index",
+				},
 				elements: {
 					point: {
 						radius: 2,
+						hitRadius: 5
 					},
 				},
 				scales: {

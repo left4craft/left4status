@@ -8,6 +8,7 @@
 		const { Chart, registerables } = await import("chart.js");
 		Chart.register(...registerables);
 		Chart.defaults.color = "white";
+		Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)";
 		const ctx = canvas.getContext("2d");
 		const chart = new Chart(ctx, {
 			type: "line",
@@ -16,56 +17,61 @@
 				datasets: [
 					{
 						label: "Total",
-						data: [4, 5, 5, 3, 1, 4, 7, 12, 8, 5],
+						data: [5, 3, 1, 4, 7, 12, 8, 5],
 						backgroundColor: "rgba(102, 170, 68, 0.1)",
 						borderColor: "rgba(102, 170, 68, 0.8)",
 						borderWidth: 2,
-						fill: false,
+						fill: true,
 						tension: 0.1,
 					},
 					{
 						label: "Hub",
-						data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						data: [0, 0, 0, 0, 0, 0, 0, 0],
 						backgroundColor: "rgba(255, 0, 170, 0.1)",
 						borderColor: "rgba(255, 0, 170, 0.8)",
 						borderWidth: 2,
-						fill: false,
+						fill: true,
 						tension: 0.1,
 					},
 					{
 						label: "Survival",
-						data: [4, 5, 5, 2, 1, 4, 5, 5, 8, 5],
+						data: [5, 2, 1, 4, 5, 5, 8, 5],
 						backgroundColor: "rgba(255, 191, 0, 0.1)",
 						borderColor: "rgba(255, 191, 0, 0.8)",
 						borderWidth: 2,
-						fill: false,
+						fill: true,
 						tension: 0.1,
 					},
 					{
 						label: "Creative",
-						data: [0, 0, 0, 1, 0, 0, 2, 2, 0, 0],
+						data: [0, 1, 0, 0, 2, 2, 0, 0],
 						backgroundColor: "rgba(0, 255, 0, 0.1)",
 						borderColor: "rgba(0, 255, 0, 0.8)",
 						borderWidth: 2,
-						fill: false,
+						fill: true,
 						tension: 0.1,
 					},
 					{
 						label: "Party Games",
-						data: [0, 0, 0, 0, 0, 0, 0, 4, 0, 0],
+						data: [0, 0, 0, 0, 0, 4, 0, 0],
 						backgroundColor: "rgba(0, 255, 255, 0.1)",
 						borderColor: "rgba(0, 255, 255, 0.8)",
 						borderWidth: 2,
-						fill: false,
+						fill: true,
 						tension: 0.1,
 					},
 				],
 			},
 			options: {
+				interaction: {
+					intersect: false,
+					mode: "index",
+				},
 				maintainAspectRatio: true,
 				elements: {
 					point: {
 						radius: 2,
+						hitRadius: 5
 					},
 				},
 				scales: {
