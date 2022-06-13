@@ -3,6 +3,7 @@ import { browser } from '$app/env';
 const statuses = {
 	degraded: {
 		bgColour: 'bg-yellow-400',
+		bgColour2: 'hover:bg-yellow-200',
 		borderColour: 'border-yellow-400',
 		description: 'Some services are suffering from degraded performance.',
 		// icon: 'fa-solid fa-turtle',
@@ -13,6 +14,7 @@ const statuses = {
 	},
 	major: {
 		bgColour: 'bg-red-400',
+		bgColour2: 'hover:bg-red-200',
 		borderColour: 'border-red-400',
 		description: 'There is a major disruption to service operation.',
 		icon: 'fa-solid fa-xmark',
@@ -22,6 +24,7 @@ const statuses = {
 	},
 	minor: { // for overall status only - offline services should always be marked as `major`
 		bgColour: 'bg-orange-400',
+		bgColour2: 'hover:bg-orange-200',
 		borderColour: 'border-orange-400',
 		description: 'Some services are offline.',
 		icon: 'fa-solid fa-triangle-exclamation',
@@ -31,6 +34,7 @@ const statuses = {
 	},
 	online: {
 		bgColour: 'bg-green-400',
+		bgColour2: 'hover:bg-green-200',
 		borderColour: 'border-green-400',
 		description: 'All services are operating normally.',
 		icon: 'fa-solid fa-check',
