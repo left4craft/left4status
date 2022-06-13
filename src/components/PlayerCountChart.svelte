@@ -85,9 +85,9 @@
 </script>
 
 <div class="text-center">
-	<p class="bg-dark rounded-full inline-block py-1 px-3 mb-4 text-sm">
-		{total(services)}<span class="text-gray-300">/50</span>
-		online
+	<p class="bg-dark rounded-full inline-block py-1 px-3 mb-4">
+		<span class="font-semibold">{total(services)}</span>
+		<span class="text-gray-300">players online</span>
 	</p>
 	<canvas bind:this={canvas} id="player-count" width="100%" height="50" />
 </div>
