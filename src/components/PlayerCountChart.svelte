@@ -4,7 +4,11 @@
 
 	let canvas;
 
-	const total = (services) => Object.keys(services).reduce((t, id) => t + services[id].player_count || 0, 0);
+	const total = (services) =>
+		Object.keys(services).reduce(
+			(t, id) => t + services[id].player_count || 0,
+			0
+		);
 
 	onMount(async () => {
 		const { Chart, registerables } = await import("chart.js");
@@ -69,7 +73,7 @@
 					intersect: false,
 					mode: "index",
 				},
-				maintainAspectRatio: true,
+				maintainAspectRatio: false,
 				elements: {
 					point: {
 						radius: 2,
@@ -89,5 +93,11 @@
 		<span class="font-semibold">{total(services)}</span>
 		<span class="text-gray-300">players online</span>
 	</p>
-	<canvas bind:this={canvas} id="player-count" width="100%" height="50" />
+	<div
+		class="chart-container relative h-56 sm:h-64 md:h-72 2xl:h-96 w-full"
+	>
+		<canvas bind:this={canvas} id="player-count" />
+	</div>
+
+	
 </div>
