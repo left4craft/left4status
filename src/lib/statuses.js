@@ -46,7 +46,7 @@ const statuses = {
 
 export default statuses;
 
-export const statusFromMins = mins => mins < 3 ? 'online' : mins < 15 ? 'minor' : 'major';
+export const statusFromMins = mins => mins <= 5 ? 'online' : mins < 15 ? 'minor' : 'major';
 
 export const minsToHours = mins => mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}m` : mins + 'm';
 
