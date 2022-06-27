@@ -29,7 +29,7 @@
 	<Summary {status} />
 </section>
 
-<section id="status" class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
+<section id="status" class="m-4 xl:m-12 2xl:mx-28 3xl:mx-96">
 	<div>
 		<h2 class="text-3xl font-bold text-center my-8">Status</h2>
 	</div>
