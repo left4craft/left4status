@@ -23,6 +23,8 @@
 		"@sveltejs/adapter-static": "1.0.0-next.34",
 		"autoprefixer": "^10.4.7",
 		"chart.js": "^3.8.0",
+		"chartjs-adapter-date-fns": "^2.0.0",
+		"date-fns": "^2.28.0",
 		"postcss": "^8.4.14",
 		"svelte-preprocess": "^4.10.7",
 		"tailwindcss": "^3.1.2"

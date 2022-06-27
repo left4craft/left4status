@@ -1,73 +1,40 @@
 <script>
 	export let services;
 	import { onMount } from "svelte";
+	import "chartjs-adapter-date-fns";
+
+	const colours = [
+		"255, 0, 170",
+		"255, 191, 0",
+		"0, 255, 0",
+		"0, 255, 255",
+		"255, 255, 255", // 102, 170, 68
+	];
 
 	let canvas;
-
-	const total = (services) =>
-		Object.keys(services).reduce(
-			(t, id) => t + services[id].player_count || 0,
-			0
-		);
+	let datasets = services.map((service, i) => ({
+		label: service.display_name,
+		data: service.history.players.map((obj) => ({
+			x: new Date(obj.time).getTime(),
+			y: obj.value,
+		})),
+		backgroundColor: `rgba(${colours[i]},0.1)`,
+		borderColor: `rgba(${colours[i]}, 0.8)`,
+		borderWidth: 2,
+		fill: true,
+		tension: 0.1,	
+	}));
 
 	onMount(async () => {
 		const { Chart, registerables } = await import("chart.js");
+		const { en } = await import("date-fns/locale");
 		Chart.register(...registerables);
 		Chart.defaults.color = "white";
 		Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)";
 		const ctx = canvas.getContext("2d");
 		const chart = new Chart(ctx, {
 			type: "line",
-			data: {
-				labels: ["7", "8", "9", "10", "11", "12th June", "Today"],
-				datasets: [
-					{
-						label: "Total",
-						data: [5, 3, 1, 4, 7, 12, 8, 5],
-						backgroundColor: "rgba(102, 170, 68, 0.1)",
-						borderColor: "rgba(102, 170, 68, 0.8)",
-						borderWidth: 2,
-						fill: true,
-						tension: 0.1,
-					},
-					{
-						label: "Hub",
-						data: [0, 0, 0, 0, 0, 0, 0, 0],
-						backgroundColor: "rgba(255, 0, 170, 0.1)",
-						borderColor: "rgba(255, 0, 170, 0.8)",
-						borderWidth: 2,
-						fill: true,
-						tension: 0.1,
-					},
-					{
-						label: "Survival",
-						data: [5, 2, 1, 4, 5, 5, 8, 5],
-						backgroundColor: "rgba(255, 191, 0, 0.1)",
-						borderColor: "rgba(255, 191, 0, 0.8)",
-						borderWidth: 2,
-						fill: true,
-						tension: 0.1,
-					},
-					{
-						label: "Creative",
-						data: [0, 1, 0, 0, 2, 2, 0, 0],
-						backgroundColor: "rgba(0, 255, 0, 0.1)",
-						borderColor: "rgba(0, 255, 0, 0.8)",
-						borderWidth: 2,
-						fill: true,
-						tension: 0.1,
-					},
-					{
-						label: "Party Games",
-						data: [0, 0, 0, 0, 0, 4, 0, 0],
-						backgroundColor: "rgba(0, 255, 255, 0.1)",
-						borderColor: "rgba(0, 255, 255, 0.8)",
-						borderWidth: 2,
-						fill: true,
-						tension: 0.1,
-					},
-				],
-			},
+			data: { datasets },
 			options: {
 				interaction: {
 					intersect: false,
@@ -80,8 +47,25 @@
 						hitRadius: 5,
 					},
 				},
+				parsing: false,
 				scales: {
-					y: { beginAtZero: false },
+					x: {
+						adapters: {
+							date: {
+								locale: en,
+							},
+						},
+						type: "time",
+						time: {
+							unit: "hour",
+						},
+						ticks: {
+							source: "auto",
+							maxRotation: 0,
+							autoSkip: true,
+						},
+					},
+					y: { beginAtZero: true },
 				},
 			},
 		});
@@ -90,7 +74,7 @@
 
 <div class="text-center">
 	<p class="bg-dark rounded-full inline-block py-1 px-3 mb-4">
-		<span class="font-semibold">{total(services)}</span>
+		<span class="font-semibold">{services.find(s => s.type === 'bungee').status.players}</span>
 		<span class="text-gray-300">players online</span>
 	</p>
 	<div

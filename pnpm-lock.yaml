@@ -5,6 +5,8 @@ specifiers:
   '@sveltejs/kit': 1.0.0-next.350
   autoprefixer: ^10.4.7
   chart.js: ^3.8.0
+  chartjs-adapter-date-fns: ^2.0.0
+  date-fns: ^2.28.0
   eslint: ^8.16.0
   eslint-plugin-svelte3: ^4.0.0
   postcss: ^8.4.14
@@ -16,6 +18,8 @@ dependencies:
   '@sveltejs/adapter-static': 1.0.0-next.34
   autoprefixer: 10.4.7_postcss@8.4.14
   chart.js: 3.8.0
+  chartjs-adapter-date-fns: 2.0.0_chart.js@3.8.0
+  date-fns: 2.28.0
   postcss: 8.4.14
   svelte-preprocess: 4.10.7_s3dopqgs4h45owyu2kxaf6kyfu
   tailwindcss: 3.1.2
@@ -298,6 +302,14 @@ packages:
     resolution: {integrity: sha512-cr8xhrXjLIXVLOBZPkBZVF6NDeiVIrPLHcMhnON7UufudL+CNeRrD+wpYanswlm8NpudMdrt3CHoLMQMxJhHRg==}
     dev: false
 
+  /chartjs-adapter-date-fns/2.0.0_chart.js@3.8.0:
+    resolution: {integrity: sha512-rmZINGLe+9IiiEB0kb57vH3UugAtYw33anRiw5kS2Tu87agpetDDoouquycWc9pRsKtQo5j+vLsYHyr8etAvFw==}
+    peerDependencies:
+      chart.js: ^3.0.0
+    dependencies:
+      chart.js: 3.8.0
+    dev: false
+
   /chokidar/3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -338,6 +350,11 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: false
+
+  /date-fns/2.28.0:
+    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /debug/4.3.4:
