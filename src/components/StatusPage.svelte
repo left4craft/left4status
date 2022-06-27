@@ -25,7 +25,7 @@
 	</section>
 {/if}
 
-<section id="summary" class="mx-4 xl:m-8 2xl:m-16 3xl:mx-96">
+<section id="summary" class="mx-4 lg:m-8 xl:mx-16 2xl:mx-32 3xl:mx-96">
 	<Summary {status} />
 </section>
 
