@@ -12,7 +12,7 @@
 
 	const update = async () => {
 		let start = Date.now();
-		response = await fetch("http://localhost:3000/demo/history.json");
+		response = await fetch("https://statusapi.l4c.link/history");
 		let body = response.ok && await response.json();
 
 		age = Math.floor(body.cached && (Date.now() - body.cached_timestamp) / 1000 / 60) || 0; // cache age in mins
