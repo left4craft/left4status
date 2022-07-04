@@ -12,7 +12,7 @@
 	$: websites = status.filter(i => i.type === 'website');
 </script>
 
-{#if age > 5}
+{#if age > 10}
 	<section class="m-4 xl:m-8 2xl:m-16 3xl:mx-96">
 		<div class="text-center">
 			<div class="bg-orange-400 shadow-2xl rounded-full inline-block py-2 px-4 bg-opacity-25">
