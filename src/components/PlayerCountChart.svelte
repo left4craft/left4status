@@ -22,7 +22,8 @@
 		borderColor: `rgba(${colours[i]}, 0.8)`,
 		borderWidth: 2,
 		fill: true,
-		tension: 0.1,	
+		tension: 0.1,
+		stepped: true	
 	}));
 
 	onMount(async () => {

@@ -30,6 +30,7 @@
 						borderWidth: 2,
 						fill: true,
 						tension: 0.1,
+						stepped: true
 					},
 				],
 			},
