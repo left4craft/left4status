@@ -17,11 +17,11 @@
 
 		age = Math.floor(body.cached && (Date.now() - body.cached_timestamp) / 1000 / 60) || 0; // cache age in mins
 
-		status = Object.keys(body)
-			.filter(key => typeof body[key] === 'object') // don't include cache data
-			// .reduce((obj, key) => (obj[key] = body[key], obj), {});
+		status = Object.keys(body.servers)
+			.filter(key => typeof body.servers[key] === 'object') // don't include cache data
+			// .reduce((obj, key) => (obj[key] = body.servers[key], obj), {});
 			.map(key => {
-				let data = body[key];
+				let data = body.servers[key];
 				data._state = !data.status.online
 					? 'major' : data.status.tps && data.status.tps < 18
 						? 'degraded' : 'online'
