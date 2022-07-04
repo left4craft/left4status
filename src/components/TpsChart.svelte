@@ -6,7 +6,7 @@
 
 	let canvas;
 	let data = service.history.tps.map((obj) => ({
-			x: new Date(obj.time).getTime(),
+			x: obj.time,
 			y: obj.value,
 		}));
 

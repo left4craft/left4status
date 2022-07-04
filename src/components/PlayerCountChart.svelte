@@ -15,7 +15,7 @@
 	let datasets = services.map((service, i) => ({
 		label: service.display_name,
 		data: service.history.players.map((obj) => ({
-			x: new Date(obj.time).getTime(),
+			x: obj.time,
 			y: obj.value,
 		})),
 		backgroundColor: `rgba(${colours[i]},0.1)`,
