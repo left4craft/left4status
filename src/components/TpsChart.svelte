@@ -63,7 +63,7 @@
 						},
 						type: "time",
 						time: {
-							unit: "hour",
+							// unit: "hour",
 						},
 						ticks: {
 							source: "auto",
