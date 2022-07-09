@@ -50,6 +50,8 @@ export const statusFromMins = mins => mins <= 5 ? 'online' : mins < 15 ? 'minor'
 
 export const minsToHours = mins => mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}m` : mins + 'm';
 
+export const secsToMins = secs => secs > 60 ? `${Math.ceil(secs / 60)} minutes` : secs + ' seconds';
+
 export const getDate = (l, i) => new Intl.DateTimeFormat(browser ? navigator.language : 'en-GB', {
 	day: 'numeric',
 	month: 'long',

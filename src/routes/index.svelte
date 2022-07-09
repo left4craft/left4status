@@ -4,6 +4,7 @@
 	import Error from "../components/Error.svelte";
 	import StatusPage from "../components/StatusPage.svelte";
 	import Loader from "../components/Loader.svelte";
+	import { secsToMins } from "$lib/statuses";
 
 	let ready = false;
 	let response = {};
@@ -37,15 +38,16 @@
 
 	update();
 
+	const interval = 300;
 	let updating = false;
-	let refreshIn = 180;
+	let refreshIn = interval;
 	setInterval(async () => {
 		refreshIn--;
 		if (refreshIn === 0) {
 			updating = true;
 			await update();
 			await new Promise((res) => setTimeout(() => res(), 1000));
-			refreshIn = 180;
+			refreshIn = interval;
 			updating = false;
 		}
 	}, 1000);
@@ -78,7 +80,7 @@
 					{#if updating}
 						Refreshing...
 					{:else}
-						Refreshing in {refreshIn} seconds
+						Refreshing in {secsToMins(refreshIn)}
 					{/if}
 				</div>
 			</div>
