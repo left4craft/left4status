@@ -6,34 +6,46 @@
 	import Loader from "../components/Loader.svelte";
 	import { secsToMins } from "$lib/statuses";
 
+	let error = null;
 	let ready = false;
-	let response = {};
 	let status = [];
 	let age = 0;
 
 	const update = async () => {
-		let start = Date.now();
-		response = await fetch("https://statusapi.l4c.link/history");
-		let body = response.ok && await response.json();
-
-		age = Math.floor(body.cached && (Date.now() - body.cached_timestamp) / 1000 / 60) || 0; // cache age in mins
-
-		status = Object.keys(body.servers)
-			.filter(key => typeof body.servers[key] === 'object') // don't include cache data
-			// .reduce((obj, key) => (obj[key] = body.servers[key], obj), {});
-			.map(key => {
-				let data = body.servers[key];
-				data._state = !data.status.online
-					? 'major' : data.status.tps && data.status.tps < 18
-						? 'degraded' : 'online'
-				data.history.online = data.history.online.map(ms => Math.round(ms / 1000 / 60)); // convert ms to mins
-				return data;
-			});
-
-		if (ready) return;
-		let end = Date.now();
-		if (end - start < 2000) await new Promise((res) => setTimeout(() => res(), 1000));
-		ready = true;
+		try {
+			error = null;
+			let response = await fetch("https://statusapi.l4c.link/history");
+			if (!response.ok) {
+				error = "Response code " + response.status;
+				ready = true;
+				return;
+			}
+			let body = await response.json();
+			age =
+				Math.floor(
+					body.cached &&
+						(Date.now() - body.cached_timestamp) / 1000 / 60
+				) || 0; // cache age in mins
+			status = Object.keys(body.servers)
+				.filter((key) => typeof body.servers[key] === "object") // don't include cache data
+				// .reduce((obj, key) => (obj[key] = body.servers[key], obj), {});
+				.map((key) => {
+					let data = body.servers[key];
+					data._state = !data.status.online
+						? "major"
+						: data.status.tps && data.status.tps < 18
+						? "degraded"
+						: "online";
+					data.history.online = data.history.online.map((ms) =>
+						Math.round(ms / 1000 / 60)
+					); // convert ms to mins
+					return data;
+				});
+			ready = true;
+		} catch (err) {
+			ready = true;
+			error = err;
+		}
 	};
 
 	update();
@@ -61,15 +73,15 @@
 			Please enable JavaScript to use this website.
 		</p>
 	</noscript>
-	
+
 	{#if !ready}
 		<section>
 			<div class="flex flex-row my-36 justify-center items-center">
 				<Loader />
 			</div>
 		</section>
-	{:else if !response.ok}
-		<Error {response} />
+	{:else if error}
+		<Error {error} />
 	{:else}
 		<StatusPage {age} {status} />
 		<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
