@@ -109,7 +109,7 @@
 				</a>
 				<a
 					class="text-white hover:underline block px-3 py-2 rounded-md text-base font-medium"
-					href="https://bans.left4craft.org"
+					href="https://www.left4craft.org/punishments"
 				>
 					Bans
 				</a>
