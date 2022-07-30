@@ -67,7 +67,7 @@
 
 <Navbar />
 
-<div class="dark:text-white lg:mx-40 2xl:mx-96 ">
+<div class="dark:text-white lg:mx-40 2xl:mx-64 4xl:mx-96 ">
 	<noscript>
 		<p class="text-red-400 text-3xl font-bold pb-2 text-center">
 			Please enable JavaScript to use this website.
@@ -84,7 +84,7 @@
 		<Error {error} />
 	{:else}
 		<StatusPage {age} {status} />
-		<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-96">
+		<section class="m-4 xl:m-12 2xl:m-28 3xl:mx-64">
 			<div class="text-center">
 				<div
 					class="bg-primary shadow-2xl rounded-full inline-block py-2 px-4 text-xs bg-opacity-25"
