@@ -14,7 +14,7 @@
 	const update = async () => {
 		try {
 			error = null;
-			let response = await fetch("https://statusapi.l4c.link/history");
+			let response = await fetch("https://api.status.left4craft.org/history");
 			if (!response.ok) {
 				error = "Response code " + response.status;
 				ready = true;
